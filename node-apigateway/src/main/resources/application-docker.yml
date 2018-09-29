@@ -1,0 +1,12 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# Eureka配置
+# ----------------------------------------------------------------------------------------------------------------------
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: "http://${EUREKA_PORT_8761_TCP_ADDR}:${EUREKA_PORT_8761_TCP_PORT}/eureka/"
+  instance:
+    instance-id: "${spring.application.name}:${random.value}"
+    prefer-ip-address: true
+    hostname: "${HOSTNAME}"

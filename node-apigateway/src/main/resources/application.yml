@@ -1,0 +1,54 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# 核心配置
+# ----------------------------------------------------------------------------------------------------------------------
+spring:
+  application:
+    name: "node-apigateway"
+  profiles:
+    active: dev
+    include: route
+  aop:
+    auto: true
+  main:
+    banner-mode: log
+    web-application-type: servlet
+  banner:
+    location: classpath:banner.txt
+  jackson:
+    locale: "zh_CN"
+    time-zone: "GMT+8"
+    date-format: "yyyy-MM-dd HH:mm:ss"
+    joda-date-time-format: ${spring.jackson.date-format}
+    default-property-inclusion: always
+    serialization:
+      indent-output: true
+      fail-on-self-references: true
+      fail-on-empty-beans: false
+      write-dates-as-timestamps: false
+      write-null-map-values: true
+      write-empty-json-arrays: true
+      write-single-elem-arrays-unwrapped: false
+      write-enums-using-to-string: true
+    deserialization:
+      fail-on-unknown-properties: false
+  jmx:
+    enabled: false
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Servlet服务器配置
+# ----------------------------------------------------------------------------------------------------------------------
+server:
+  port: 5555
+  servlet:
+    context-path: "/"
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Endpoint
+# ----------------------------------------------------------------------------------------------------------------------
+management:
+  endpoints:
+    web:
+      base-path: "/actuator"
+      exposure:
+        include: "*"
+        exclude: "info"
