@@ -10,7 +10,6 @@ import scala.beans.BeanProperty
 sealed trait Pet extends Serializable
 
 object Cat {
-
 }
 
 @Entity
@@ -18,6 +17,7 @@ object Cat {
 class Cat extends Pet {
 
   @Id
+  @Column(name = "id")
   @BeanProperty
   var id: String = _
 
