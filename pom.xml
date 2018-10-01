@@ -16,19 +16,6 @@
     </modules>
     <packaging>pom</packaging>
 
-    <distributionManagement>
-        <repository>
-            <id>ccae-releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://192.168.0.154:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ccae-snapshots</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>http://192.168.0.154:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <properties>
         <encoding>UTF-8</encoding>
         <java.version>1.8</java.version>
@@ -43,6 +30,7 @@
         <docker.image.prefix>sce</docker.image.prefix>
         <maven.test.skip>true</maven.test.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
+        <maven.install.skip>true</maven.install.skip>
     </properties>
 
     <dependencyManagement>
