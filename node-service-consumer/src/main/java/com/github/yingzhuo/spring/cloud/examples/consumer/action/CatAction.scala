@@ -13,7 +13,7 @@ class CatAction(catClient: CatClient) {
     catClient.findOne(id)
   }
 
-  @RequestMapping(Array("/{name}"))
+  @RequestMapping(Array("/name/{name}"))
   def findByName(@PathVariable("name") name: String): Cat = {
     catClient.findByName(name)
   }
