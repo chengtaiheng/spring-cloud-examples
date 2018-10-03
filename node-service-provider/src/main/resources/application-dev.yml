@@ -3,7 +3,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 spring:
   datasource:
-    url: "jdbc:mysql://10.211.55.26:3306/demo?useSSL=true&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
+    driver-class-name: "org.mariadb.jdbc.Driver"
+    url: "jdbc:mariadb://10.211.55.26:3310/demo?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
     username: "root"
     password: "root"
   jpa:
@@ -17,8 +18,6 @@ spring:
         hibernate:
           format_sql: true
           enable_lazy_load_no_trans: false
-          dialect:
-            storage_engine: innodb
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Eureka配置

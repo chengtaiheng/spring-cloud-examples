@@ -13,6 +13,8 @@ services:
       - 8761:8761
     volumes:
       - ${PWD}/log/eureka/:/log/
+    env_file:
+      - ${PWD}/env.sh
 
   # -------------------------------------------------
   # 服务网关
