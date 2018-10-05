@@ -18,6 +18,11 @@ spring:
         hibernate:
           format_sql: true
           enable_lazy_load_no_trans: false
+  redis:
+    database: 0
+    host: "10.211.55.26"
+    port: "6379"
+    password: "133810"
 
 # ----------------------------------------------------------------------------------------------------------------------
 # Eureka配置
