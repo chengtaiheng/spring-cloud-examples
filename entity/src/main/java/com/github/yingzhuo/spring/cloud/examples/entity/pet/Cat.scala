@@ -27,6 +27,11 @@ class Cat extends Pet {
   @BeanProperty
   var name: String = _
 
+  @Enumerated(EnumType.STRING)
+  @Column(name = "sex")
+  @BeanProperty
+  var sex: Sex = _
+
   @Column(name = "keeper")
   @BeanProperty
   var keeper: String = _

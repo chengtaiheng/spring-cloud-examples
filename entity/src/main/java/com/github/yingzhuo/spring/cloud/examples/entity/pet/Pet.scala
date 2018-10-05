@@ -6,6 +6,5 @@ package com.github.yingzhuo.spring.cloud.examples.entity.pet
 object Pet {
 }
 
-trait Pet extends Serializable
-
-
+trait Pet extends Serializable {
+}
