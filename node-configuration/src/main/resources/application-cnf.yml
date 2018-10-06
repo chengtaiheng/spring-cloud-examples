@@ -1,0 +1,12 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# 核心配置
+# ----------------------------------------------------------------------------------------------------------------------
+spring:
+  cloud:
+    config:
+      allow-override: true
+      server:
+        git:
+          uri: "git@github.com:yingzhuo/spring-cloud-examples-configuration.git"
+#          uri: "file://${user.home}/dev/git-workspace/spring-cloud-examples-configuration"
+          clone-on-start: true

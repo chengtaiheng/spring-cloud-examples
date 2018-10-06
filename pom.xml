@@ -9,8 +9,9 @@
     <version>1.0.0</version>
     <modules>
         <module>entity</module>
-        <module>node-apigateway</module>
         <module>node-eureka</module>
+        <module>node-configuration</module>
+        <module>node-apigateway</module>
         <module>node-service-provider</module>
         <module>node-service-consumer</module>
     </modules>

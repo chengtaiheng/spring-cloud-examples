@@ -17,6 +17,25 @@ services:
       - ${PWD}/env.sh
 
   # -------------------------------------------------
+  # 集中配置
+  # -------------------------------------------------
+
+  configuration:
+    image: "sce/node-configuration:1.0.0"
+    container_name: "sce-configuration"
+    ports:
+      - 9990:9990
+    links:
+      - eureka:eureka
+    volumes:
+      - ${PWD}/log/configuration/:/log/
+      - ~/.ssh/:/root/.ssh/:ro
+    extra_hosts:
+      - "outside:172.17.0.1"
+    env_file:
+      - ${PWD}/env.sh
+
+  # -------------------------------------------------
   # 服务网关
   # -------------------------------------------------
 
@@ -28,7 +47,7 @@ services:
     ports:
       - 5555:5555
     volumes:
-      - ${PWD}/log/api-gatway/:/log/
+      - ${PWD}/log/api-gateway/:/log/
     env_file:
       - ${PWD}/env.sh
 

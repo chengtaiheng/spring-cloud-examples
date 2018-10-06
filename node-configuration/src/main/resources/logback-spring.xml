@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <springProfile name="dev">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS,GMT+8}]%-5level %logger{72}[%L] - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="com.github.yingzhuo" level="DEBUG"/>
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.hibernate.SQL" level="DEBUG"/>
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+        <logger name="com.netflix.discovery.DiscoveryClient" level="OFF"/>
+        <logger name="com.netflix.discovery.InstanceInfoReplicator" level="OFF"/>
+        <logger name="com.netflix.discovery.shared" level="OFF"/>
+
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+
+    <springProfile name="docker">
+        <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+            <file>/log/all.log</file>
+            <append>false</append>
+            <encoder>
+                <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS,GMT+8}]%-5level %logger{72}[%L] - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="com.github.yingzhuo" level="DEBUG"/>
+        <logger name="org.springframework" level="INFO"/>
+        <logger name="org.hibernate.SQL" level="DEBUG"/>
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
+        <logger name="com.netflix.discovery.DiscoveryClient" level="OFF"/>
+        <logger name="com.netflix.discovery.InstanceInfoReplicator" level="OFF"/>
+        <logger name="com.netflix.discovery.shared" level="OFF"/>
+
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+</configuration>
