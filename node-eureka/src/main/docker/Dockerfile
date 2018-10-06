@@ -1,5 +1,5 @@
 ##
-# Playground
+# spring-cloud-examples
 ##
 
 FROM openjdk:8u171-alpine
