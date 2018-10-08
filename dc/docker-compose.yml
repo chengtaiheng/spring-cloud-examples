@@ -7,7 +7,7 @@ services:
   # -------------------------------------------------
 
   eureka:
-    image: "sce/node-eureka:1.0.0"
+    image: "sce/node-eureka"
     container_name: "sce-eureka"
     ports:
       - 8761:8761
@@ -21,7 +21,7 @@ services:
   # -------------------------------------------------
 
   configuration:
-    image: "sce/node-configuration:1.0.0"
+    image: "sce/node-configuration"
     container_name: "sce-configuration"
     ports:
       - 9990:9990
@@ -31,7 +31,7 @@ services:
       - ${PWD}/log/configuration/:/log/
       - ~/.ssh/:/root/.ssh/:ro
     extra_hosts:
-      - "outside:172.17.0.1"
+      - "outside:${DOCKER0}"
     env_file:
       - ${PWD}/env.sh
 
@@ -40,7 +40,7 @@ services:
   # -------------------------------------------------
 
   api-gateway:
-    image: "sce/node-apigateway:1.0.0"
+    image: "sce/node-apigateway"
     container_name: "sce-apigateway"
     links:
       - eureka:eureka
@@ -56,14 +56,14 @@ services:
   # -------------------------------------------------
 
   service-provider:
-    image: "sce/node-service-provider:1.0.0"
+    image: "sce/node-service-provider"
     container_name: "sce-provider"
     links:
       - eureka:eureka
     ports:
       - 8080:8080
     extra_hosts:
-      - "outside:172.17.0.1"
+      - "outside:${DOCKER0}"
     volumes:
       - ${PWD}/log/service-provider/:/log/
     env_file:
@@ -74,7 +74,7 @@ services:
   # -------------------------------------------------
 
   service-consumer:
-    image: "sce/node-service-consumer:1.0.0"
+    image: "sce/node-service-consumer"
     container_name: "sce-consumer"
     links:
       - eureka:eureka

@@ -4,8 +4,6 @@
 spring:
   application:
     name: "node-service-consumer"
-  profiles:
-    active: dev
   aop:
     auto: true
   main:

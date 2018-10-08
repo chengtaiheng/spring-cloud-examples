@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Docker
+DOCKER0=172.17.0.1
+
 # Eureka
 EUREKA_HOST=eureka
 EUREKA_PORT=8761
