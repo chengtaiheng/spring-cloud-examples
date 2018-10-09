@@ -2,10 +2,6 @@
 # 核心配置
 # ----------------------------------------------------------------------------------------------------------------------
 spring:
-  application:
-    name: "node-service-provider"
-  profiles:
-    active: dev
   aop:
     auto: true
   main:

@@ -2,11 +2,6 @@
 # 核心配置
 # ----------------------------------------------------------------------------------------------------------------------
 spring:
-  application:
-    name: "node-configuration"
-  profiles:
-    active: dev
-    include: cnf
   aop:
     auto: true
   main:
