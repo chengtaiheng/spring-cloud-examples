@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableJpaRepositories
 @EnableTransactionManagement
-@EntityScan(Array("com.github.yingzhuo.spring.cloud.examples"))
+@EntityScan(Array(EntityPackage))
 @Configuration
 class ApplicationCnfJpa {
 

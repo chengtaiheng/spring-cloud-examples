@@ -2,6 +2,7 @@ package com.github.yingzhuo.spring.cloud.examples.entity.pet
 
 import java.util.Date
 
+import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
 import javax.persistence._
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 
@@ -32,10 +33,6 @@ class Cat extends Pet {
   @BeanProperty
   var sex: Sex = _
 
-  @Column(name = "keeper")
-  @BeanProperty
-  var keeper: String = _
-
   @Column(name = "created_time")
   @Temporal(TemporalType.TIMESTAMP)
   @BeanProperty
@@ -45,5 +42,9 @@ class Cat extends Pet {
   @Temporal(TemporalType.TIMESTAMP)
   @BeanProperty
   var lastModifiedTime: Date = _
+
+  @ManyToOne
+  @JoinColumn(name = "keeper_id", referencedColumnName = "id", foreignKey = new ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  var keeper: Keeper = _
 
 }

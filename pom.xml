@@ -22,13 +22,14 @@
         <java.version>1.8</java.version>
         <scala.version>2.12.6</scala.version>
         <springboot.version>2.0.5.RELEASE</springboot.version>
-        <spring.version>5.0.9.RELEASE</spring.version>
+        <spring.version>5.1.0.RELEASE</spring.version>
         <springcloud.version>Finchley.RELEASE</springcloud.version>
         <jackson.version>2.9.6</jackson.version>
         <gson.version>2.8.2</gson.version>
         <slf4j.version>1.7.25</slf4j.version>
 
         <docker.image.prefix>sce</docker.image.prefix>
+
         <maven.test.skip>true</maven.test.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.install.skip>true</maven.install.skip>
