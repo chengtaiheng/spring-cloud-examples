@@ -4,7 +4,7 @@ import java.util.Date
 
 import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
 import javax.persistence._
-import org.springframework.data.jpa.domain.support.AuditingEntityListener
+import org.springframework.data.annotation.{CreatedDate, LastModifiedDate}
 
 import scala.beans.BeanProperty
 
@@ -16,7 +16,6 @@ object Cat {
   */
 @Entity
 @Table(name = "t_cat")
-@EntityListeners(Array(classOf[AuditingEntityListener]))
 class Cat extends Pet {
 
   @Id
@@ -33,11 +32,13 @@ class Cat extends Pet {
   @BeanProperty
   var sex: Sex = _
 
+  @CreatedDate
   @Column(name = "created_time")
   @Temporal(TemporalType.TIMESTAMP)
   @BeanProperty
   var createdTime: Date = _
 
+  @LastModifiedDate
   @Column(name = "last_modified_time")
   @Temporal(TemporalType.TIMESTAMP)
   @BeanProperty

@@ -11,21 +11,6 @@ import org.springframework.data.redis.serializer.{Jackson2JsonRedisSerializer, R
 class ApplicationCnfRedis {
 
   @Bean
-  def objectRedisSerializer(): RedisSerializer[Object] = {
-    val om = new ObjectMapper()
-    om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY)
-    om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL)
-    val serializer = new Jackson2JsonRedisSerializer[Object](classOf[Object])
-    serializer.setObjectMapper(om)
-    serializer
-  }
-
-  @Bean
-  def stringRedisSerializer(): StringRedisSerializer = {
-    new StringRedisSerializer()
-  }
-
-  @Bean
   def redisTemplate(redisConnectionFactory: RedisConnectionFactory): RedisTemplate[String, Object] = {
     val template = new RedisTemplate[String, Object]()
     template.setConnectionFactory(redisConnectionFactory)
@@ -38,10 +23,25 @@ class ApplicationCnfRedis {
   }
 
   @Bean
+  def objectRedisSerializer(): RedisSerializer[Object] = {
+    val om = new ObjectMapper()
+    om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY)
+    om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL)
+    val serializer = new Jackson2JsonRedisSerializer[Object](classOf[Object])
+    serializer.setObjectMapper(om)
+    serializer
+  }
+
+  @Bean
   def stringRedisTemplate(redisConnectionFactory: RedisConnectionFactory): StringRedisTemplate = {
     val template = new StringRedisTemplate(redisConnectionFactory)
     template.setStringSerializer(stringRedisSerializer())
     template
+  }
+
+  @Bean
+  def stringRedisSerializer(): StringRedisSerializer = {
+    new StringRedisSerializer()
   }
 
 }
