@@ -7,11 +7,6 @@ class CatListener {
 
   @PostPersist
   def afterSave(cat: Cat): Unit = {
-
-    println("---")
-    println("监听器")
-    println("---")
-
   }
 
 }

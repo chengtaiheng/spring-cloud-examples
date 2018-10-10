@@ -1,9 +1,11 @@
 package com.github.yingzhuo.spring.cloud.examples.provider.controller
 
+import com.github.yingzhuo.spring.cloud.examples.common.exception.BusinessException
+import com.github.yingzhuo.spring.cloud.examples.common.util.uuid
 import com.github.yingzhuo.spring.cloud.examples.entity.pet.{Cat, Sex}
 import com.github.yingzhuo.spring.cloud.examples.provider.dao.{CatDao, KeeperDao}
-import com.github.yingzhuo.spring.cloud.examples.provider.util.UUID
 import org.springframework.cache.annotation.Cacheable
+import org.springframework.transaction.annotation.{Propagation, Transactional}
 import org.springframework.web.bind.annotation._
 
 @RestController
@@ -19,22 +21,28 @@ class CatController(catDao: CatDao, keeperDao: KeeperDao) {
   def findByName(@PathVariable("name") name: String): Cat = catDao.findByName(name)
 
   @PostMapping
+  @Transactional(propagation = Propagation.REQUIRED)
   def createNewCat(@RequestParam("name") name: String,
                    @RequestParam("sex") sex: Sex,
                    @RequestParam(value = "keeperId", required = false) keeperId: String): Cat = {
 
-    val keeper =
-      if (keeperId != null)
-        keeperDao.findById(keeperId).orElse(null)
-      else
-        null
+    // 不允许重名
+    if (catDao.existsByName(name)) {
+      throw BusinessException()
+    }
+
+    val keeper = keeperId match {
+      case null => null
+      case x if x.isEmpty => null
+      case x => keeperDao.findById(x).orElse(null)
+    }
 
     val cat = new Cat
-    cat.id = UUID()
+    cat.id = uuid()
     cat.sex = sex
     cat.name = name
     cat.keeper = keeper
-    catDao.save(cat)
+    catDao.saveAndFlush(cat)
   }
 
 }

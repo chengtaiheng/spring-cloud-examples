@@ -1,6 +1,6 @@
 # SpringCloud演示项目
 
-本项目用`docker-compose`启动，请参考[docker-compose.yml](https://github.com/yingzhuo/spring-cloud-examples/blob/master/dc/docker-compose.yml)。
+本项目用`docker-compose`启动，请参考[docker-compose.yml](https://github.com/yingzhuo/spring-cloud-examples/blob/master/.docker-compose/docker-compose.yml)。
 
 ### 注意事项
 
