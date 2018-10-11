@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Configuration
 class ApplicationCnfJackson {
 
   @Autowired
-  def config(om: ObjectMapper): Unit = {
-    om.registerModule(DefaultScalaModule)
-  }
+  def config(om: ObjectMapper): Unit = om.registerModule(DefaultScalaModule)
 
 }

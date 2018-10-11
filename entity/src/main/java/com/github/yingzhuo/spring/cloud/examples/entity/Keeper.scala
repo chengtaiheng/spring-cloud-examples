@@ -1,6 +1,11 @@
 package com.github.yingzhuo.spring.cloud.examples.entity
 
-import javax.persistence.{Column, Entity, Id, Table}
+import java.util.Date
+
+import javax.persistence._
+import org.springframework.data.annotation.CreatedDate
+
+import scala.beans.BeanProperty
 
 object Keeper {
 }
@@ -15,5 +20,11 @@ class Keeper {
 
   @Column(name = "name", length = 20)
   var name: String = _
+
+  @CreatedDate
+  @Column(name = "created_time")
+  @Temporal(TemporalType.TIMESTAMP)
+  @BeanProperty
+  var createdTime: Date = _
 
 }

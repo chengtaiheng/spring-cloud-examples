@@ -28,7 +28,7 @@ class CatController(catDao: CatDao, keeperDao: KeeperDao) {
 
     // 不允许重名
     if (catDao.existsByName(name)) {
-      throw BusinessException()
+      throw BusinessException(s"'$name'已经被占用")
     }
 
     val keeper = keeperId match {

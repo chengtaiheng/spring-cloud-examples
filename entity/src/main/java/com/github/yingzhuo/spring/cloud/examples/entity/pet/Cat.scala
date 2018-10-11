@@ -32,6 +32,11 @@ class Cat extends Pet {
   @BeanProperty
   var sex: Sex = _
 
+  @ManyToOne
+  @JoinColumn(name = "keeper_id", referencedColumnName = "id", foreignKey = new ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
+  @BeanProperty
+  var keeper: Keeper = _
+
   @CreatedDate
   @Column(name = "created_time")
   @Temporal(TemporalType.TIMESTAMP)
@@ -43,11 +48,6 @@ class Cat extends Pet {
   @Temporal(TemporalType.TIMESTAMP)
   @BeanProperty
   var lastModifiedTime: Date = _
-
-  @ManyToOne
-  @JoinColumn(name = "keeper_id", referencedColumnName = "id", foreignKey = new ForeignKey(value = ConstraintMode.NO_CONSTRAINT, name = "none"))
-  @BeanProperty
-  var keeper: Keeper = _
 
   @CreatedBy
   @Column(name = "created_by", length = 40)
