@@ -8,7 +8,7 @@ import com.typesafe.scalalogging.Logger
 import feign.hystrix.FallbackFactory
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.stereotype.Component
-import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestParam}
+import org.springframework.web.bind.annotation._
 
 @FeignClient(
   name = "node-service-provider",
@@ -25,6 +25,12 @@ trait KeeperClient {
 
   @PostMapping
   def createKeeper(@RequestParam("name") name: String): Keeper
+
+  @PutMapping
+  def rename(@RequestParam("id") id: String, @RequestParam("name") name: String): Unit
+
+  @DeleteMapping(Array("/{keeperId}"))
+  def delete(@PathVariable("keeperId") keeperId: String): Unit
 
 }
 
@@ -53,6 +59,16 @@ object KeeperClient {
           log.error("fallback !")
           log.error(cause.getMessage, cause)
           null
+        }
+
+        override def rename(id: String, name: String): Unit = {
+          log.error("fallback !")
+          log.error(cause.getMessage, cause)
+        }
+
+        override def delete(keeperId: String): Unit = {
+          log.error("fallback !")
+          log.error(cause.getMessage, cause)
         }
       }
     }

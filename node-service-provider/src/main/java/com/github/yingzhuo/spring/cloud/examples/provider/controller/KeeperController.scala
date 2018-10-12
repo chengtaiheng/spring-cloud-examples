@@ -5,13 +5,15 @@ import java.util
 import com.github.yingzhuo.spring.cloud.examples.common.exception.BusinessException
 import com.github.yingzhuo.spring.cloud.examples.common.util.uuid
 import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
-import com.github.yingzhuo.spring.cloud.examples.provider.dao.KeeperDao
+import com.github.yingzhuo.spring.cloud.examples.provider.dao.{CatDao, KeeperDao}
 import com.typesafe.scalalogging.Logger
 import org.springframework.web.bind.annotation._
 
+import scala.util.Try
+
 @RestController
 @RequestMapping(Array("/keeper"))
-class KeeperController(keeperDao: KeeperDao) {
+class KeeperController(keeperDao: KeeperDao, catDao: CatDao) {
 
   val log = Logger(getClass)
 
@@ -22,7 +24,7 @@ class KeeperController(keeperDao: KeeperDao) {
   def findById(@PathVariable("id") id: String): Keeper = keeperDao.findById(id).orElse(null)
 
   @PostMapping
-  def createKeeper(@RequestParam("name") name: String): Keeper = {
+  def create(@RequestParam("name") name: String): Keeper = {
 
     log.debug("name={}", name)
 
@@ -35,6 +37,33 @@ class KeeperController(keeperDao: KeeperDao) {
     keeper.name = name
 
     keeperDao.save(keeper)
+  }
+
+  @PutMapping
+  def rename(@RequestParam("id") id: String, @RequestParam("name") name: String): Unit = {
+
+    val optional = keeperDao.findById(id)
+
+    optional.ifPresent {
+      case x: Keeper =>
+        x.name = name
+        keeperDao.save(x)
+    }
+  }
+
+  @DeleteMapping(Array("/{keeperId}"))
+  def delete(@PathVariable("keeperId") keeperId: String): Unit = {
+
+    if (catDao.isKeeperIdUsed(keeperId)) {
+
+      throw BusinessException(s"keeperId=${keeperId}已被使用")
+    }
+    else {
+      Try(keeperDao.deleteById(keeperId)) match {
+        case scala.util.Failure(_) => log.debug("id为{}的Keeper不存在", keeperId)
+        case _ =>
+      }
+    }
   }
 
 }

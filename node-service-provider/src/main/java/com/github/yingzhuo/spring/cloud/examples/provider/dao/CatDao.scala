@@ -12,6 +12,9 @@ trait CatDao extends JpaRepository[Cat, String] with CatExtDao {
   @Query("select count(c.id) <> 0 from Cat c where c.name = :name")
   def existsByName(@Param("name") name: String): Boolean
 
+  @Query("select count(k.id) <> 0 from Cat c left join c.keeper k where k.id = :keeperId")
+  def isKeeperIdUsed(@Param("keeperId") keeperId: String): Boolean
+
 }
 
 trait CatExtDao {

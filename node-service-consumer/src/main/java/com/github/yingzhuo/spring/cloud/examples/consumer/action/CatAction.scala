@@ -16,7 +16,7 @@ class CatAction(catClient: CatClient) {
     val cat = catClient.findOne(id)
 
     Json()
-      .add(("cat", cat))
+      .add("cat", cat)
   }
 
   @RequestMapping(Array("/name/{name}"))
@@ -24,7 +24,7 @@ class CatAction(catClient: CatClient) {
     val cat = catClient.findByName(name)
 
     Json()
-      .add(("cat", cat))
+      .add("cat", cat)
   }
 
 }

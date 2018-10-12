@@ -17,7 +17,7 @@ class KeeperAction(keeperClient: KeeperClient) {
     val keeper = keeperClient.createKeeper(name)
 
     Json()
-      .add(("keeper", keeper))
+      .add("keeper", keeper)
   }
 
 }
