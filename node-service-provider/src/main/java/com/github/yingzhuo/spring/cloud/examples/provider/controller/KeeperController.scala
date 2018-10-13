@@ -7,6 +7,7 @@ import com.github.yingzhuo.spring.cloud.examples.common.util.uuid
 import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
 import com.github.yingzhuo.spring.cloud.examples.provider.dao.{CatDao, KeeperDao}
 import com.typesafe.scalalogging.Logger
+import org.springframework.transaction.annotation.{Propagation, Transactional}
 import org.springframework.web.bind.annotation._
 
 import scala.util.Try
@@ -18,12 +19,15 @@ class KeeperController(keeperDao: KeeperDao, catDao: CatDao) {
   val log = Logger(getClass)
 
   @GetMapping
+  @Transactional(propagation = Propagation.SUPPORTS)
   def findAll(): util.List[Keeper] = keeperDao.findAll()
 
   @GetMapping(Array("/{id}"))
+  @Transactional(propagation = Propagation.SUPPORTS)
   def findById(@PathVariable("id") id: String): Keeper = keeperDao.findById(id).orElse(null)
 
   @PostMapping
+  @Transactional(propagation = Propagation.REQUIRED)
   def create(@RequestParam("name") name: String): Keeper = {
 
     log.debug("name={}", name)
@@ -39,8 +43,9 @@ class KeeperController(keeperDao: KeeperDao, catDao: CatDao) {
     keeperDao.save(keeper)
   }
 
-  @PutMapping
-  def rename(@RequestParam("id") id: String, @RequestParam("name") name: String): Unit = {
+  @PutMapping(Array("/{id}"))
+  @Transactional(propagation = Propagation.REQUIRED)
+  def update(@PathVariable("id") id: String, @RequestParam("name") name: String): Unit = {
 
     val optional = keeperDao.findById(id)
 
@@ -52,6 +57,7 @@ class KeeperController(keeperDao: KeeperDao, catDao: CatDao) {
   }
 
   @DeleteMapping(Array("/{keeperId}"))
+  @Transactional(propagation = Propagation.REQUIRED)
   def delete(@PathVariable("keeperId") keeperId: String): Unit = {
 
     if (catDao.isKeeperIdUsed(keeperId)) {

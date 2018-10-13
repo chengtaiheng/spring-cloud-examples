@@ -45,4 +45,20 @@ class CatController(catDao: CatDao, keeperDao: KeeperDao) {
     catDao.saveAndFlush(cat)
   }
 
+  @PutMapping(Array("/{id}"))
+  @Transactional(propagation = Propagation.SUPPORTS)
+  def update(@PathVariable("id") id: String,
+             @RequestParam(value = "name", required = false) name: String,
+             @RequestParam(value = "sex", required = false) sex: Sex): Unit = {
+
+    val optional = catDao.findById(id)
+
+    optional.ifPresent {
+      case x: Cat =>
+        if (name != null) x.name = name
+        if (sex != null) x.sex = sex
+        catDao.save(x)
+    }
+  }
+
 }

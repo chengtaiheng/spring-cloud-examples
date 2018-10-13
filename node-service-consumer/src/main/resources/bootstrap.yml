@@ -6,7 +6,7 @@ spring:
     name: "node-service-consumer"
   profiles:
     active: dev
-    include: default
+    include: default,timeout
 
 ---
 
