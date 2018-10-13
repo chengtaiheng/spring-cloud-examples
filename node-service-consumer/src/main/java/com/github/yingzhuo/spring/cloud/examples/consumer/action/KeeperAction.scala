@@ -4,7 +4,7 @@ import java.util
 
 import com.github.yingzhuo.spring.cloud.examples.common.json.Json
 import com.github.yingzhuo.spring.cloud.examples.consumer.cli.KeeperClient
-import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
+import com.github.yingzhuo.spring.cloud.examples.entity.pet.Keeper
 import com.typesafe.scalalogging.Logger
 import org.springframework.web.bind.annotation.{GetMapping, PostMapping, RequestMapping, RestController}
 

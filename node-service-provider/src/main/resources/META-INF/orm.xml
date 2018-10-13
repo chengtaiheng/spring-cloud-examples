@@ -4,7 +4,7 @@
                  xmlns="http://java.sun.com/xml/ns/persistence/orm"
                  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_1.xsd">
 
-    <entity class="com.github.yingzhuo.spring.cloud.examples.entity.Keeper">
+    <entity class="com.github.yingzhuo.spring.cloud.examples.entity.pet.Keeper">
         <entity-listeners>
             <entity-listener class="org.springframework.data.jpa.domain.support.AuditingEntityListener"/>
         </entity-listeners>

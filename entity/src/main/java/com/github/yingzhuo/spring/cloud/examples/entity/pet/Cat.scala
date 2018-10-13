@@ -2,7 +2,6 @@ package com.github.yingzhuo.spring.cloud.examples.entity.pet
 
 import java.util.Date
 
-import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
 import javax.persistence._
 import org.springframework.data.annotation.{CreatedBy, CreatedDate, LastModifiedBy, LastModifiedDate}
 

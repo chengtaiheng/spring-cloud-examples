@@ -1,4 +1,4 @@
-package com.github.yingzhuo.spring.cloud.examples.entity
+package com.github.yingzhuo.spring.cloud.examples.entity.pet
 
 import java.util.Date
 

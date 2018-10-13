@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.{ExceptionHandler, ResponseStatus
 @RestControllerAdvice
 class ExceptionHandlers {
 
-  val logger = Logger(getClass)
+  val log = Logger(getClass)
 
   @ExceptionHandler
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   def handleException(ex: BusinessException): Map[String, AnyRef] = {
+
+    log.debug("业务异常: {}", ex.getMessage)
 
     Map(
       "type" -> classOf[BusinessException].getName,

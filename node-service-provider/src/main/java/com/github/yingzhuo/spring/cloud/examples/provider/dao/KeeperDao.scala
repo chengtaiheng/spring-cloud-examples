@@ -1,11 +1,11 @@
 package com.github.yingzhuo.spring.cloud.examples.provider.dao
 
-import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
+import com.github.yingzhuo.spring.cloud.examples.entity.pet.Keeper
 import javax.persistence.EntityManager
 import org.springframework.data.jpa.repository.{JpaRepository, Query}
 import org.springframework.data.repository.query.Param
 
-trait KeeperDao extends JpaRepository[Keeper, String] with KeeperExtDao {
+sealed trait KeeperDao extends JpaRepository[Keeper, String] with KeeperExtDao {
 
   def findByName(name: String): Keeper
 
@@ -14,6 +14,6 @@ trait KeeperDao extends JpaRepository[Keeper, String] with KeeperExtDao {
 
 }
 
-trait KeeperExtDao
+sealed trait KeeperExtDao
 
 class KeeperDaoImpl(em: EntityManager) extends KeeperExtDao

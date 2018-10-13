@@ -5,7 +5,7 @@ import javax.persistence.EntityManager
 import org.springframework.data.jpa.repository.{JpaRepository, Query}
 import org.springframework.data.repository.query.Param
 
-trait CatDao extends JpaRepository[Cat, String] with CatExtDao {
+sealed trait CatDao extends JpaRepository[Cat, String] with CatExtDao {
 
   def findByName(name: String): Cat
 
@@ -17,8 +17,6 @@ trait CatDao extends JpaRepository[Cat, String] with CatExtDao {
 
 }
 
-trait CatExtDao {
-}
+sealed trait CatExtDao
 
-class CatDaoImpl(em: EntityManager) extends CatExtDao {
-}
+class CatDaoImpl(em: EntityManager) extends CatExtDao

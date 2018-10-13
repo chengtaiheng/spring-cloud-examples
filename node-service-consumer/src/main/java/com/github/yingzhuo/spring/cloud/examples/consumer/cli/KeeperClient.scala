@@ -3,7 +3,7 @@ package com.github.yingzhuo.spring.cloud.examples.consumer.cli
 import java.util
 
 import com.github.yingzhuo.spring.cloud.examples.consumer.cli.KeeperClient.Fallback
-import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
+import com.github.yingzhuo.spring.cloud.examples.entity.pet.Keeper
 import com.typesafe.scalalogging.Logger
 import feign.hystrix.FallbackFactory
 import org.springframework.cloud.openfeign.FeignClient

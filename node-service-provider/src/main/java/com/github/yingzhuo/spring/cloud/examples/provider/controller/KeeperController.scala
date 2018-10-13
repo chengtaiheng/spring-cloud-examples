@@ -4,7 +4,7 @@ import java.util
 
 import com.github.yingzhuo.spring.cloud.examples.common.exception.BusinessException
 import com.github.yingzhuo.spring.cloud.examples.common.util.uuid
-import com.github.yingzhuo.spring.cloud.examples.entity.Keeper
+import com.github.yingzhuo.spring.cloud.examples.entity.pet.Keeper
 import com.github.yingzhuo.spring.cloud.examples.provider.dao.{CatDao, KeeperDao}
 import com.typesafe.scalalogging.Logger
 import org.springframework.transaction.annotation.{Propagation, Transactional}
