@@ -3,6 +3,7 @@ package com.github.yingzhuo.spring.cloud.examples.consumer.cli
 import java.util
 
 import com.github.yingzhuo.spring.cloud.examples.consumer.cli.KeeperClient.Fallback
+import com.github.yingzhuo.spring.cloud.examples.consumer.cli.config.FeignConfig
 import com.github.yingzhuo.spring.cloud.examples.entity.pet.Keeper
 import com.typesafe.scalalogging.Logger
 import feign.hystrix.FallbackFactory
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation._
 @FeignClient(
   name = "node-service-provider",
   path = "/keeper",
-  fallbackFactory = classOf[Fallback]
+  fallbackFactory = classOf[Fallback],
+  configuration = Array(classOf[FeignConfig])
 )
 trait KeeperClient {
 
