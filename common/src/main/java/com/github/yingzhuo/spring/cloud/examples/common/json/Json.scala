@@ -9,8 +9,6 @@ case class Json(error: String = null, payload: mutable.Map[String, Any] = mutabl
     this
   }
 
-  def add(pair: (String, Any)): Json = this + pair
-
   def add(k: String, v: Any): Json = this + (k, v)
 
 }

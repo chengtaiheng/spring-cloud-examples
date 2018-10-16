@@ -10,3 +10,10 @@ eureka:
     instance-id: "${spring.application.name}:${random.value}"
     prefer-ip-address: true
     hostname: "${HOSTNAME}"
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: "file:///root/spring-cloud-examples-configuration"
