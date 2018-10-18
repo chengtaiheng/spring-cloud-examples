@@ -12,4 +12,5 @@ package object consumer {
   object FeignDate2StringConverter extends Converter[Date, String] {
     override def convert(date: Date): String = DateFormatUtils.format(date, FeignDatePattern)
   }
+
 }
