@@ -10,11 +10,11 @@ services:
     image: "sce/node-eureka"
     container_name: "sce-eureka"
     ports:
-      - 8761:8761
+    - 8761:8761
     volumes:
-      - ${PWD}/log/eureka/:/log/
+    - ${PWD}/log/:/log/
     env_file:
-      - ${PWD}/env.sh
+    - ${PWD}/env.sh
 
   # -------------------------------------------------
   # 集中配置
@@ -24,17 +24,14 @@ services:
     image: "sce/node-configuration"
     container_name: "sce-configuration"
     ports:
-      - 9990:9990
+    - 9990:9990
     links:
-      - eureka:eureka
+    - eureka:eureka
     volumes:
-      - ${PWD}/log/configuration/:/log/
-      - ${PWD}/spring-cloud-examples-configuration/:/root/spring-cloud-examples-configuration/
-      - ~/.ssh/:/root/.ssh/:ro
-    extra_hosts:
-      - "outside:172.17.0.1"
+    - ${PWD}/log/:/log/
+    - ~/.ssh/:/root/.ssh/:ro
     env_file:
-      - ${PWD}/env.sh
+    - ${PWD}/env.sh
 
   # -------------------------------------------------
   # 服务网关
@@ -44,13 +41,13 @@ services:
     image: "sce/node-apigateway"
     container_name: "sce-apigateway"
     links:
-      - eureka:eureka
+    - eureka:eureka
     ports:
-      - 5555:5555
+    - 5555:5555
     volumes:
-      - ${PWD}/log/api-gateway/:/log/
+    - ${PWD}/log/:/log/
     env_file:
-      - ${PWD}/env.sh
+    - ${PWD}/env.sh
 
   # -------------------------------------------------
   # 服务生产者
@@ -60,15 +57,13 @@ services:
     image: "sce/node-service-provider"
     container_name: "sce-provider"
     links:
-      - eureka:eureka
+    - eureka:eureka
     ports:
-      - 8080:8080
-    extra_hosts:
-      - "outside:172.17.0.1"
+    - 8080:8080
     volumes:
-      - ${PWD}/log/service-provider/:/log/
+    - ${PWD}/log/:/log/
     env_file:
-      - ${PWD}/env.sh
+    - ${PWD}/env.sh
 
   # -------------------------------------------------
   # 服务消费者
@@ -78,15 +73,15 @@ services:
     image: "sce/node-service-consumer"
     container_name: "sce-consumer"
     links:
-      - eureka:eureka
+    - eureka:eureka
     ports:
-      - 7080:7080
+    - 7080:7080
     volumes:
-      - ${PWD}/log/service-consumer/:/log/
+    - ${PWD}/log/:/log/
     env_file:
-      - ${PWD}/env.sh
+    - ${PWD}/env.sh
 
 networks:
-   default:
-     external:
-       name: mirai
+  default:
+    external:
+      name: tiger

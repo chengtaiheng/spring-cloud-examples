@@ -2,8 +2,8 @@
 # spring-cloud-examples
 ##
 
-FROM openjdk:8u171-alpine
+FROM yingzhuo/java:8
 MAINTAINER yingzhuo "yingzhor@gmail.com"
 VOLUME /tmp
-ADD node-service-provider.jar app.jar
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.profiles.active=default,docker"]
+ADD app.jar app.jar
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.profiles.active=docker"]

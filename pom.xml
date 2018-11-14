@@ -425,7 +425,7 @@
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>app</finalName>
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/java</directory>

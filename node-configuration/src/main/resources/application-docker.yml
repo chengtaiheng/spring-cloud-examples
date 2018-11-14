@@ -16,4 +16,5 @@ spring:
     config:
       server:
         git:
-          uri: "file:///root/spring-cloud-examples-configuration"
+          uri: "git@github.com:yingzhuo/spring-cloud-examples-configuration.git"
+          clone-on-start: true

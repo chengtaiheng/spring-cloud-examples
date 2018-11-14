@@ -12,7 +12,7 @@ class AuthorAction @Autowired()(@Value("${author:unknown}") authorProperty: Stri
   @GetMapping(Array("/author"))
   def author(): Json = {
     Json()
-      .add("author", "authorProperty")
+      .add("author", authorProperty)
   }
 
 }

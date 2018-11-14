@@ -7,6 +7,5 @@ spring:
       allow-override: true
       server:
         git:
-#          uri: "git@github.com:yingzhuo/spring-cloud-examples-configuration.git"
-          uri: "file://${user.home}/dev/git-workspace/spring-cloud-examples-configuration"
+          uri: "git@github.com:yingzhuo/spring-cloud-examples-configuration.git"
           clone-on-start: true

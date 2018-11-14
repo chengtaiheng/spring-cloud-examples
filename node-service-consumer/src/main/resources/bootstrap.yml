@@ -23,4 +23,4 @@ spring:
   profiles: docker
   cloud:
     config:
-      uri: "http://${CONFIG_SERVER_HOST}:${CONFIG_SERVER_PORT}"
+      uri: "http://${CONFIG_SERVER_HOST}n:${CONFIG_SERVER_PORT}"
