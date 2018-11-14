@@ -3,10 +3,9 @@
 # ----------------------------------------------------------------------------------------------------------------------
 spring:
   datasource:
-    driver-class-name: "org.mariadb.jdbc.Driver"
-    url: "jdbc:mariadb://${MARIADB_HOST}:${MARIADB_PORT}/demo?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
-    username: "${MARIADB_ROOT_USERNAME}"
-    password: "${MARIADB_ROOT_PASSWORD}"
+    url: "jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/demo?useSSL=false&autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
+    username: "${MYSQL_ROOT_USERNAME}"
+    password: "${MYSQL_ROOT_PASSWORD}"
   jpa:
     open-in-view: false
     show-sql: false
@@ -16,9 +15,9 @@ spring:
         implicit-strategy: "org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
     database-platform: "org.hibernate.dialect.MySQL5InnoDBDialect"
     properties:
-        hibernate:
-          format_sql: false
-          enable_lazy_load_no_trans: false
+      hibernate:
+        format_sql: false
+        enable_lazy_load_no_trans: false
   redis:
     database: 0
     host: "${REDIS_HOST}"

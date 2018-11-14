@@ -21,12 +21,12 @@
     <properties>
         <encoding>UTF-8</encoding>
         <java.version>1.8</java.version>
-        <scala.version>2.12.6</scala.version>
+        <scala.version>2.12.7</scala.version>
         <springboot.version>2.0.6.RELEASE</springboot.version>
         <spring.version>5.1.2.RELEASE</spring.version>
         <springcloud.version>Finchley.RELEASE</springcloud.version>
         <jackson.version>2.9.7</jackson.version>
-        <gson.version>2.8.2</gson.version>
+        <gson.version>2.8.5</gson.version>
         <slf4j.version>1.7.25</slf4j.version>
 
         <docker.image.prefix>sce</docker.image.prefix>
@@ -293,7 +293,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.2</version>
+                <version>1.18.4</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -307,6 +307,11 @@
                 <groupId>org.mariadb.jdbc</groupId>
                 <artifactId>mariadb-java-client</artifactId>
                 <version>2.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.47</version>
             </dependency>
 
             <!-- netty -->
