@@ -38,6 +38,12 @@
             <artifactId>jackson-module-scala_2.12</artifactId>
         </dependency>
 
+        <!-- logstash -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
+
         <!-- commons -->
         <dependency>
             <groupId>com.google.guava</groupId>
