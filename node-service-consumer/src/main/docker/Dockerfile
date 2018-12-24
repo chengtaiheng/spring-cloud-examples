@@ -3,8 +3,10 @@
 ##
 
 FROM yingzhuo/java:8
-MAINTAINER yingzhuo "yingzhor@gmail.com"
+MAINTAINER yingzhuo yingzhor@gmail.com
 VOLUME /tmp
-RUN mkdir -p /log/
 ADD app.jar app.jar
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.profiles.active=docker"]
+ADD entrypoint.sh entrypoint.sh
+RUN mkdir -p /log/ && \
+    chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
